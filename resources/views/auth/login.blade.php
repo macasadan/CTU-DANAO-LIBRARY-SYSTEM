@@ -50,7 +50,7 @@
         </div>
 
         <!-- Login Form -->
-        <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">
+        <form class="mt-8 space-y-6" id="login-form" method="POST" action="{{ route('login') }}">
             @csrf
 
             <!-- Email Field -->
@@ -122,7 +122,10 @@
             <!-- Login Button -->
             <div>
                 <button type="submit"
-                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                    class="g-recaptcha group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+                    data-sitekey="{{ config('services.recaptcha.site_key') }}"
+                    data-callback='onSubmit' 
+                    data-action='submit'>
                     <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                         <i class="fas fa-sign-in-alt text-blue-500 group-hover:text-blue-400"></i>
                     </span>
@@ -130,7 +133,11 @@
                 </button>
             </div>
         </form>
-
+        <script>
+            function onSubmit(token) {
+              document.getElementById("login-form").submit();
+            }
+          </script>
         <!-- Register Link -->
         <div class="mt-6 text-center">
             <p class="text-sm text-gray-600">
