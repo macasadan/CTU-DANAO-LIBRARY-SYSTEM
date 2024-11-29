@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LostItemController;
-use App\Http\Controllers\PCRoomController;
+use App\Http\Controllers\PcRoomController;
 use App\Http\Controllers\DiscussionRoomController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\SuperAdminMiddleware;
