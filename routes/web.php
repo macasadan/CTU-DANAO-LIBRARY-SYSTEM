@@ -11,7 +11,7 @@ use App\Http\Middleware\SuperAdminMiddleware;
 use App\Http\Controllers\Admin\AdminBookController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminLostItemController;
-use App\Http\Controllers\Admin\AdminPCRoomController;
+use App\Http\Controllers\Admin\AdminPcRoomController;
 use App\Http\Controllers\Admin\AdminDiscussionRoomController;
 use App\Http\Controllers\Admin\AdminBorrowController;
 use App\Http\Controllers\SuperAdmin\SuperAdminBookController;
