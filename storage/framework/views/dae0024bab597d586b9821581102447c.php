@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
     <style>
         /* Float Animation */
         @keyframes float {
@@ -434,7 +435,7 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <img src="<?php echo e(asset('images/Assistant.jpg')); ?>" alt="Jovita B. Ybanez" class="w-full h-50 object-cover object-center">
+                        <img src="<?php echo e(asset('images/assistant.jpg')); ?>" alt="Jovita B. Ybanez" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
                             <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Jovita B. Ybanez</h3>
                             <p class="text-blue-600 font-medium mb-4">Assistant Librarian</p>
@@ -462,7 +463,7 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <img src="<?php echo e(asset('images/staff2.png')); ?>" alt="Ferjan B. Labandero" class="w-full h-50 object-cover object-center">
+                        <img src="<?php echo e(asset('images/staff22.png')); ?>" alt="Ferjan B. Labandero" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
                             <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Ferjan B. Labandero</h3>
                             <p class="text-blue-600 font-medium mb-4">Library Staff</p>
