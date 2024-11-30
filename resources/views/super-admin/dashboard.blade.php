@@ -1,5 +1,8 @@
 @extends('layouts.superadmin')
 
+@section('title', 'Super Admin Dashboard')
+
+@section('header', 'Dashboard Overview')
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
