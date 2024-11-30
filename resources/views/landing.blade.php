@@ -69,17 +69,18 @@
     <!-- Navbar -->
     <header class="bg-blue-700 shadow fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo Section with simple hover effect -->
-            <div class="flex items-center transform transition-transform duration-300 hover:scale-105 group">
-                <img src="{{ asset('images/logo.jpg') }}" alt="Library Logo" class="w-12 h-12 mr-3 rounded-full shadow-lg transition-all duration-300 group-hover:shadow-xl">
-                <h1 class="text-2xl font-semibold text-white group-hover:text-yellow-300 transition-colors duration-300">CTU Danao Library</h1>
-            </div>
+        <div class="flex items-center">
+    <a href="/" class="flex items-center transform transition-transform duration-300 hover:scale-105 group">
+        <img src="{{ asset('images/logo.jpg') }}" alt="Library Logo" class="w-12 h-12 mr-3 rounded-full shadow-lg transition-all duration-300 group-hover:shadow-xl">
+        <h1 class="text-2xl font-semibold text-white group-hover:text-yellow-300 transition-colors duration-300">CTU Danao Library</h1>
+    </a>
+</div>
 
             <!-- Navigation Links -->
             <nav class="hidden md:flex space-x-6">
                 <a href="#features" class="text-white hover:text-yellow-300 transition-all duration-300 transform hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-yellow-300 hover:after:w-full after:transition-all">Features</a>
                 <a href="#about-us" class="text-white hover:text-yellow-300 transition-all duration-300 transform hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-yellow-300 hover:after:w-full after:transition-all">About Us</a>
-                <a href="#team" class="text-white hover:text-yellow-300 transition-all duration-300 transform hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-yellow-300 hover:after:w-full after:transition-all">Team</a>
+                <a href="#team" class="text-white hover:text-yellow-300 transition-all duration-300 transform hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-yellow-300 hover:after:w-full after:transition-all">Library Staffs</a>
                 <a href="#contact" class="text-white hover:text-yellow-300 transition-all duration-300 transform hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-yellow-300 hover:after:w-full after:transition-all">Contact</a>
             </nav>
 
@@ -271,7 +272,7 @@
         <div class="absolute inset-0 pattern-dots opacity-10"></div>
         <div class="container mx-auto text-center relative z-10">
             <h3 class="text-4xl font-extrabold mb-6 text-blue-800 animate-fade-in">
-                Meet Our Team
+                About Us
             </h3>
             <p class="text-lg text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed animate-slide-in">
                 Discover the passionate professionals driving innovation and excellence. Our diverse team is committed to supporting your academic journey with expertise, creativity, and dedication.
@@ -418,7 +419,7 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <img src="{{ asset('images/librarian.jpg') }}" alt="Sarah Jean N. Jamero" class="w-full h-64 object-cover object-center">
+                        <img src="{{ asset('images/headlibrarian.png') }}" alt="Sarah Jean N. Jamero" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
                             <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Sarah Jean N. Jamero</h3>
                             <p class="text-blue-600 font-medium mb-4">Head Librarian</p>
@@ -433,14 +434,12 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="bg-blue-50 h-64 flex items-center justify-center">
-                            <img src="https://via.placeholder.com/150" alt="Assistant Librarian" class="w-32 h-32 rounded-full object-cover border-4 border-yellow-400">
-                        </div>
+                        <img src="{{ asset('images/Assistant.jpg') }}" alt="Jovita B. Ybanez" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
-                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Assistant Librarian</h3>
-                            <p class="text-blue-600 font-medium mb-4">Library Operations</p>
+                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Jovita B. Ybanez</h3>
+                            <p class="text-blue-600 font-medium mb-4">Assistant Librarian</p>
                             <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
-                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Supporting daily library operations and ensuring smooth service delivery.</p>
+                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Assisting in daily library operations, managing catalog systems, and helping patrons with research and resource needs.</p>
                             </div>
                         </div>
                     </div>
@@ -449,12 +448,12 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <img src="{{ asset('images/alvin.jpg') }}" alt="Alvin Kris Hermosilla" class="w-full h-50 object-cover object-center">
+                        <img src="{{ asset('images/staff1.png') }}" alt="Alvin Kris Hermosilla" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
                             <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Alvin Kris Hermosilla</h3>
-                            <p class="text-blue-600 font-medium mb-4">Digital Resources Manager</p>
+                            <p class="text-blue-600 font-medium mb-4">Library Staff</p>
                             <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
-                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Managing our digital resources and technological infrastructure.</p>
+                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Providing support in organizing, managing, and maintaining library resources to ensure efficient access for students and faculty.</p>
                             </div>
                         </div>
                     </div>
@@ -463,14 +462,12 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="bg-blue-50 h-64 flex items-center justify-center">
-                            <img src="https://via.placeholder.com/150" alt="Maria Clara Santos" class="w-32 h-32 rounded-full object-cover border-4 border-yellow-400">
-                        </div>
+                        <img src="{{ asset('images/staff2.png') }}" alt="Ferjan B. Labandero" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
-                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Maria Clara Santos</h3>
-                            <p class="text-blue-600 font-medium mb-4">Cataloging Specialist</p>
+                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Ferjan B. Labandero</h3>
+                            <p class="text-blue-600 font-medium mb-4">Library Staff</p>
                             <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
-                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Organizing and maintaining our extensive collection catalog.</p>
+                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Providing support in organizing, managing, and maintaining library resources to ensure efficient access for students and faculty.</p>
                             </div>
                         </div>
                     </div>
@@ -479,18 +476,47 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="bg-blue-50 h-64 flex items-center justify-center">
-                            <img src="https://via.placeholder.com/150" alt="John Michael Cruz" class="w-32 h-32 rounded-full object-cover border-4 border-yellow-400">
-                        </div>
+                        <img src="{{ asset('images/staff3.png') }}" alt="Marivel C. Meca" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
-                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">John Michael Cruz</h3>
-                            <p class="text-blue-600 font-medium mb-4">Systems Librarian</p>
+                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Marivel C. Meca</h3>
+                            <p class="text-blue-600 font-medium mb-4">Library Staff</p>
                             <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
-                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Maintaining and improving our library systems and databases.</p>
+                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Providing support in organizing, managing, and maintaining library resources to ensure efficient access for students and faculty.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="group">
+                    <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <img src="{{ asset('images/staff4.png') }}" alt="Marianita F. Balili" class="w-full h-50 object-cover object-center">
+                        <div class="p-6 relative z-10">
+                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Marianita F. Balili</h3>
+                            <p class="text-blue-600 font-medium mb-4">Library Staff</p>
+                            <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
+                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Providing support in organizing, managing, and maintaining library resources to ensure efficient access for students and faculty.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <img src="{{ asset('images/staff5.png') }}" alt="Daisy J. Habla" class="w-full h-50 object-cover object-center">
+                        <div class="p-6 relative z-10">
+                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Daisy J. Habla</h3>
+                            <p class="text-blue-600 font-medium mb-4">Library Staff</p>
+                            <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
+                                <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Providing support in organizing, managing, and maintaining library resources to ensure efficient access for students and faculty.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
 
