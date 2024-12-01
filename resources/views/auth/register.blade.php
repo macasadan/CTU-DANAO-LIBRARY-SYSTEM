@@ -33,7 +33,7 @@
                 </div>
             </div>
             <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-                Create Account
+                Create Accounts
             </h2>
             <p class="mt-2 text-sm text-gray-600">
                 Join our library community today
