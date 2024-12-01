@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-    
+
     <style>
         /* Float Animation */
         @keyframes float {
@@ -70,12 +70,12 @@
     <!-- Navbar -->
     <header class="bg-blue-700 shadow fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center">
-    <a href="/" class="flex items-center transform transition-transform duration-300 hover:scale-105 group">
-        <img src="<?php echo e(asset('images/logo.jpg')); ?>" alt="Library Logo" class="w-12 h-12 mr-3 rounded-full shadow-lg transition-all duration-300 group-hover:shadow-xl">
-        <h1 class="text-2xl font-semibold text-white group-hover:text-yellow-300 transition-colors duration-300">CTU Danao Library</h1>
-    </a>
-</div>
+            <div class="flex items-center">
+                <a href="/" class="flex items-center transform transition-transform duration-300 hover:scale-105 group">
+                    <img src="<?php echo e(asset('images/logo.jpg')); ?>" alt="Library Logo" class="w-12 h-12 mr-3 rounded-full shadow-lg transition-all duration-300 group-hover:shadow-xl">
+                    <h1 class="text-2xl font-semibold text-white group-hover:text-yellow-300 transition-colors duration-300">CTU Danao Library</h1>
+                </a>
+            </div>
 
             <!-- Navigation Links -->
             <nav class="hidden md:flex space-x-6">
@@ -463,9 +463,9 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <img src="<?php echo e(asset('images/staff22.png')); ?>" alt="Ferjan B. Labandero" class="w-full h-50 object-cover object-center">
+                        <img src="<?php echo e(asset('images/staff5.png')); ?>" alt="Daisy J. Habla" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
-                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Ferjan B. Labandero</h3>
+                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Daisy J. Habla</h3>
                             <p class="text-blue-600 font-medium mb-4">Library Staff</p>
                             <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
                                 <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Providing support in organizing, managing, and maintaining library resources to ensure efficient access for students and faculty.</p>
@@ -473,6 +473,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
@@ -505,9 +506,9 @@
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <img src="<?php echo e(asset('images/staff5.png')); ?>" alt="Daisy J. Habla" class="w-full h-50 object-cover object-center">
+                        <img src="<?php echo e(asset('images/staff2.png')); ?>" alt="Ferjan B. Labandero" class="w-full h-50 object-cover object-center">
                         <div class="p-6 relative z-10">
-                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Daisy J. Habla</h3>
+                            <h3 class="text-2xl font-bold text-blue-800 group-hover:text-yellow-400 transition-colors duration-300">Ferjan B. Labandero</h3>
                             <p class="text-blue-600 font-medium mb-4">Library Staff</p>
                             <div class="h-0 group-hover:h-20 overflow-hidden transition-all duration-300">
                                 <p class="text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Providing support in organizing, managing, and maintaining library resources to ensure efficient access for students and faculty.</p>
@@ -618,7 +619,7 @@
                             </div>
                             <div>
                                 <h5 class="font-semibold text-black">Follow us on Facebook</h5>
-                                <p class="text-black-200"><a href="https://www.facebook.com/yourlibrary" class="text-blue-500 hover:underline" target="_blank">facebook.com/yourlibrary</a></p>
+                                <p class="text-black-200"><a href="https://www.facebook.com/yourlibrary" class="text-blue-500 hover:underline" target="_blank">facebook.com/ctudanaolibrary</a></p>
                             </div>
                         </div>
                     </div>
@@ -642,6 +643,4 @@
 </body>
 
 </html>
-</body>
-
-</html><?php /**PATH C:\xampp\htdocs\LARAVEL\tatan\CTU-DANAO-LIBRARY-SYSTEM\resources\views/landing.blade.php ENDPATH**/ ?>
+</body><?php /**PATH C:\xampp\htdocs\LARAVEL\tatan\CTU-DANAO-LIBRARY-SYSTEM\resources\views/landing.blade.php ENDPATH**/ ?>
