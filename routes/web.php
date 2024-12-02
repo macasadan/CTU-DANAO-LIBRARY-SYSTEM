@@ -49,7 +49,7 @@ Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')-
         '/delete-admin/{adminId}',
         [SuperadminmainnaniController::class, 'deleteAdmin']
     )
-        ->name('super-admin.delete-admin');
+        ->name('delete-admin');
     Route::get('pc-room/session-logs', [SuperadminmainnaniController::class, 'sessionLogs'])
         ->name('session-logs');
     Route::get('/lost-item-logs', [SuperadminmainnaniController::class, 'lostItemLogs'])
