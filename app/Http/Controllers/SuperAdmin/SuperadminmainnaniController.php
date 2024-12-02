@@ -32,6 +32,7 @@ class SuperadminmainnaniController extends Controller
         ));
     }
 
+
     public function manageAdmins()
     {
         $admins = User::where('is_admin', true)->get();
@@ -75,6 +76,8 @@ class SuperadminmainnaniController extends Controller
         $users = User::where('is_admin', false)->get();
         return view('super-admin.user-management', compact('users'));
     }
+
+    // You can remove the systemLogs method if it's no longer needed
     public function books()
     {
         $books = Book::with('category')->paginate(10);
@@ -110,92 +113,92 @@ class SuperadminmainnaniController extends Controller
 
         return view('super-admin.returned-book-logs', compact('returnedBooks'));
     }
-    
-public function reportLogs(Request $request)
-{
-    $query = Borrow::with(['user', 'book'])
-        ->where('status', 'approved');
 
-    // Handle status filter
-    if ($request->filled('status')) {
-        if ($request->status === 'approved') {
-            $query->whereNull('returned_at');
-        } elseif ($request->status === 'returned') {
-            $query->whereNotNull('returned_at');
+    public function reportLogs(Request $request)
+    {
+        $query = Borrow::with(['user', 'book'])
+            ->where('status', 'approved');
+
+        // Handle status filter
+        if ($request->filled('status')) {
+            if ($request->status === 'approved') {
+                $query->whereNull('returned_at');
+            } elseif ($request->status === 'returned') {
+                $query->whereNotNull('returned_at');
+            }
         }
-    }
 
-    // Handle search
-    if ($request->filled('search')) {
-        $search = $request->search;
-        $query->where(function ($q) use ($search) {
-            $q->whereHas('book', function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%");
-            })->orWhereHas('user', function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%");
-            })->orWhere('id_number', 'like', "%{$search}%");
-        });
-    }
-
-    $allBorrows = $query->latest('borrow_date')
-        ->paginate(10)
-        ->appends(request()->query());
-
-    return view('super-admin.report-logs', compact('allBorrows'));
-}
-public function discussionRoomHistory(Request $request)
-{
-    $query = DiscussionRoomReservation::with(['user', 'discussionRoom']);
-
-    // Validate and sanitize inputs
-    $validStatuses = ['approved', 'rejected', 'pending'];
-
-    // Status Filter with validation
-    if ($request->filled('status') && in_array($request->status, $validStatuses)) {
-        $query->where('status', $request->status);
-    }
-
-    // Search Filter with input sanitization
-    if ($request->filled('search')) {
-        $search = trim($request->search);
-        $query->where(function ($q) use ($search) {
-            $q->whereHas('user', function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
-            })->orWhereHas('discussionRoom', function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%");
-            })->orWhere('purpose', 'like', "%{$search}%"); // Added purpose search
-        });
-    }
-
-    // Additional optional date range filter
-    if ($request->filled('start_date') && $request->filled('end_date')) {
-        try {
-            $startDate = Carbon::parse($request->start_date)->startOfDay();
-            $endDate = Carbon::parse($request->end_date)->endOfDay();
-            $query->whereBetween('created_at', [$startDate, $endDate]);
-        } catch (\Exception $e) {
-            // Log error, but don't break the query
-            Log::warning('Invalid date range in discussion room history filter', [
-                'start_date' => $request->start_date,
-                'end_date' => $request->end_date
-            ]);
+        // Handle search
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->whereHas('book', function ($q) use ($search) {
+                    $q->where('title', 'like', "%{$search}%");
+                })->orWhereHas('user', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })->orWhere('id_number', 'like', "%{$search}%");
+            });
         }
+
+        $allBorrows = $query->latest('borrow_date')
+            ->paginate(10)
+            ->appends(request()->query());
+
+        return view('super-admin.report-logs', compact('allBorrows'));
     }
+    public function discussionRoomHistory(Request $request)
+    {
+        $query = DiscussionRoomReservation::with(['user', 'discussionRoom']);
 
-    // Get paginated reservations
-    $reservations = $query->orderBy('created_at', 'desc')
-        ->paginate(15)
-        ->appends(request()->query());
+        // Validate and sanitize inputs
+        $validStatuses = ['approved', 'rejected', 'pending'];
 
-    // Get statistics for the dashboard
-    $stats = [
-        'total_reservations' => DiscussionRoomReservation::count(),
-        'approved_count' => DiscussionRoomReservation::where('status', 'approved')->count(),
-        'rejected_count' => DiscussionRoomReservation::where('status', 'rejected')->count(),
-        'pending_count' => DiscussionRoomReservation::where('status', 'pending')->count(),
-    ];
+        // Status Filter with validation
+        if ($request->filled('status') && in_array($request->status, $validStatuses)) {
+            $query->where('status', $request->status);
+        }
 
-    return view('super-admin.history', compact('reservations', 'stats'));
-}
+        // Search Filter with input sanitization
+        if ($request->filled('search')) {
+            $search = trim($request->search);
+            $query->where(function ($q) use ($search) {
+                $q->whereHas('user', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%");
+                })->orWhereHas('discussionRoom', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })->orWhere('purpose', 'like', "%{$search}%"); // Added purpose search
+            });
+        }
+
+        // Additional optional date range filter
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            try {
+                $startDate = Carbon::parse($request->start_date)->startOfDay();
+                $endDate = Carbon::parse($request->end_date)->endOfDay();
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            } catch (\Exception $e) {
+                // Log error, but don't break the query
+                Log::warning('Invalid date range in discussion room history filter', [
+                    'start_date' => $request->start_date,
+                    'end_date' => $request->end_date
+                ]);
+            }
+        }
+
+        // Get paginated reservations
+        $reservations = $query->orderBy('created_at', 'desc')
+            ->paginate(15)
+            ->appends(request()->query());
+
+        // Get statistics for the dashboard
+        $stats = [
+            'total_reservations' => DiscussionRoomReservation::count(),
+            'approved_count' => DiscussionRoomReservation::where('status', 'approved')->count(),
+            'rejected_count' => DiscussionRoomReservation::where('status', 'rejected')->count(),
+            'pending_count' => DiscussionRoomReservation::where('status', 'pending')->count(),
+        ];
+
+        return view('super-admin.history', compact('reservations', 'stats'));
+    }
 }

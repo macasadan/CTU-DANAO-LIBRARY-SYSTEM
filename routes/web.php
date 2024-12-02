@@ -42,21 +42,20 @@ Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')-
     Route::get('/manage-admins', [SuperadminmainnaniController::class, 'manageAdmins'])->name('manage-admins');
     Route::get('/create-admin', [SuperadminmainnaniController::class, 'createAdmin'])->name('create-admin');
     Route::post('/store-admin', [SuperadminmainnaniController::class, 'storeAdmin'])->name('store-admin');
-    Route::get('/system-logs', [SuperadminmainnaniController::class, 'systemLogs'])->name('system-logs');
+    Route::get('/user-management', [SuperadminmainnaniController::class, 'userManagement'])->name('user-management');
     Route::get('pc-room/session-logs', [SuperadminmainnaniController::class, 'sessionLogs'])
         ->name('session-logs');
     Route::get('/lost-item-logs', [SuperadminmainnaniController::class, 'lostItemLogs'])
         ->name('lost-item-logs');
     Route::get('returned-book-logs', [SuperadminmainnaniController::class, 'returnedBookLogs'])
         ->name('returned-book-logs');
-        Route::get('/report-logs', [SuperadminmainnaniController::class, 'reportLogs'])->name('report-logs');
-        Route::get('/history', [SuperadminmainnaniController::class, 'discussionRoomHistory'])
-    ->name('history');
+    Route::get('/report-logs', [SuperadminmainnaniController::class, 'reportLogs'])->name('report-logs');
+    Route::get('/history', [SuperadminmainnaniController::class, 'discussionRoomHistory'])
+        ->name('history');
 
     // Book routes
     Route::get('/books', [SuperAdminBookController::class, 'index'])->name('books.index');
     Route::get('/books/{book}', [SuperAdminBookController::class, 'show'])->name('books.show');
-
 });
 
 // Admin Routes
@@ -101,14 +100,13 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->name('admi
             ->name('check-expired');
         Route::get('/history', [AdminDiscussionRoomController::class, 'history'])
             ->name('history');
-            Route::patch('/{room}/room-status', [AdminDiscussionRoomController::class, 'updateRoomStatus'])
+        Route::patch('/{room}/room-status', [AdminDiscussionRoomController::class, 'updateRoomStatus'])
             ->name('room-status');
-            Route::patch('/{room}/update-status', [AdminDiscussionRoomController::class, 'updateStatus'])
+        Route::patch('/{room}/update-status', [AdminDiscussionRoomController::class, 'updateStatus'])
             ->name('update-status');
-        
+
         Route::post('/{room}/end-session', [AdminDiscussionRoomController::class, 'endSession'])
             ->name('end-session');
-            
     });
     // PC Room admin routes
     Route::prefix('pc-room')->name('pc-room.')->group(function () {
@@ -167,7 +165,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/check-availability', [DiscussionRoomController::class, 'checkRoomAvailability'])->name('check-availability');
         Route::patch('/{reservations}', [DiscussionRoomController::class, 'update'])->name('update');
     });
-    
 });
 
 // Include auth.php routes (which handle login/registration)
