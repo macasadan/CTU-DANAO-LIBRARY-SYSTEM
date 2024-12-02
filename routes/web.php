@@ -45,6 +45,11 @@ Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')-
     Route::get('/user-management', [SuperadminmainnaniController::class, 'userManagement'])->name('user-management');
     Route::delete('/user-management/{userId}', [SuperadminmainnaniController::class, 'deleteUser'])
         ->name('delete-user');
+    Route::delete(
+        '/delete-admin/{adminId}',
+        [SuperadminmainnaniController::class, 'deleteAdmin']
+    )
+        ->name('super-admin.delete-admin');
     Route::get('pc-room/session-logs', [SuperadminmainnaniController::class, 'sessionLogs'])
         ->name('session-logs');
     Route::get('/lost-item-logs', [SuperadminmainnaniController::class, 'lostItemLogs'])
@@ -54,6 +59,7 @@ Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')-
     Route::get('/report-logs', [SuperadminmainnaniController::class, 'reportLogs'])->name('report-logs');
     Route::get('/history', [SuperadminmainnaniController::class, 'discussionRoomHistory'])
         ->name('history');
+
 
     // Book routes
     Route::get('/books', [SuperAdminBookController::class, 'index'])->name('books.index');
