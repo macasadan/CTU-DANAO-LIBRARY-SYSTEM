@@ -44,7 +44,7 @@
 
                 {{-- Navigation Links --}}
                 <!-- Navigation Links -->
-                <nav class="p-4 space-y-2 flex-grow overflow-y-auto pb-50">
+                <nav class="p-10 space-y-2 flex-grow overflow-y-auto pb-50">
 
                     <a href="{{ route('dashboard') }}" class="flex items-center p-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 group">
                         <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
