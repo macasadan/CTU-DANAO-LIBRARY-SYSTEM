@@ -115,7 +115,7 @@
                                 <a href="{{ route('profile.edit') }}" class="text-sm text-gray-500 hover:text-red-600">{{ Auth::user()->name }}</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="text-sm text-gray-500 hover:text-red-600 bg-red">Logout</button>
+                                    <button type="submit" class="text-sm text-red-500 hover:text-red-600">Logout</button>
                                 </form>
 
                             </div>
