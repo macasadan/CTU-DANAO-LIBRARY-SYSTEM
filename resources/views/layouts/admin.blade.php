@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Dashboard')</title>
+    <link rel="icon" type="image/jpg" href="{{ asset('/images/logo.jpg') }}">
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     @stack('styles')
@@ -32,10 +33,10 @@
                 <h1 class="text-2xl font-bold text-blue-800 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-                Library Admin
+                    </svg>
+                    Library Admin
                 </h1>
-                
+
                 <!-- Mobile Close Button -->
                 <button id="mobile-sidebar-close" class="absolute top-2 right-2 md:hidden">
                     <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -190,14 +191,14 @@
 </body>
 
 </html>
-        <!-- Main Content -->
-        <div class="flex-1 ml-64">
-   
+<!-- Main Content -->
+<div class="flex-1 ml-64">
 
-        
-        </div>
-    </div>
-    @stack('scripts')
+
+
+</div>
+</div>
+@stack('scripts')
 </body>
 
 </html>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'CTU - Library System') }}</title>
+    <link rel="icon" type="image/jpg" href="{{ asset('/images/logo.jpg') }}">
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net" rel="preconnect">
@@ -36,9 +37,9 @@
                 {{-- Logo Section --}}
                 <!-- Logo Section -->
                 <div class="flex items-center justify-between p-6 border-b">
-                <div class="flex items-center justify-center p-6 border-b">
-    <img src="{{ asset('images/logo.jpg') }}" alt="Your Logo" class="h-15 w-15 rounded-full object-cover">
-</div>
+                    <div class="flex items-center justify-center p-6 border-b">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="Your Logo" class="h-15 w-15 rounded-full object-cover">
+                    </div>
                 </div>
 
                 {{-- Navigation Links --}}
