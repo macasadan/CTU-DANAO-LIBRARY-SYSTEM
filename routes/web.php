@@ -37,7 +37,7 @@ Route::middleware('guest')->group(function () {
 });
 
 // Super Admin Routes
-Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')->name('super-admin.')->group(function () {
+Route::middleware(['auth', 'verified', SuperAdminMiddleware::class])->prefix('super-admin')->name('super-admin.')->group(function () {
     Route::get('/dashboard', [SuperadminmainnaniController::class, 'dashboard'])->name('dashboard');
     Route::get('/manage-admins', [SuperadminmainnaniController::class, 'manageAdmins'])->name('manage-admins');
     Route::get('/create-admin', [SuperadminmainnaniController::class, 'createAdmin'])->name('create-admin');
@@ -67,7 +67,7 @@ Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')-
 });
 
 // Admin Routes
-Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified', AdminMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
 
     // Admin Dashboard
 
