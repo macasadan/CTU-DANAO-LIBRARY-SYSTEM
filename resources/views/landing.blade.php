@@ -74,6 +74,7 @@
             <div class="flex items-center">
                 <a href="/" class="flex items-center transform transition-transform duration-300 hover:scale-105 group">
                     <img src="{{ asset('images/logo.jpg') }}" alt="Library Logo" class="w-12 h-12 mr-3 rounded-full shadow-lg transition-all duration-300 group-hover:shadow-xl">
+                    <h1 class="text-2xl font-semibold text-white group-hover:text-yellow-300 transition-colors duration-300">Library</h1>
                 </a>
             </div>
 
