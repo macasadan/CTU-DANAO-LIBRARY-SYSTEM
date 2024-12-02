@@ -100,27 +100,28 @@
                         </svg>
                         <span class="ml-3">Lost Items</span>
                     </a>
-                </nav>
 
-                {{-- User Section --}}
-                <div class="p-4 border-t">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-3">
+                    {{-- User Section --}}
+                    <div class="p-4 border-t">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3">
 
-                            <a href="{{ route('profile.edit') }}" class="text-sm text-gray-500 hover:text-red-600">{{ Auth::user()->name }}</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="text-sm text-gray-500 hover:text-red-600">Logout</button>
-                            </form>
+                                <a href="{{ route('profile.edit') }}" class="text-sm text-gray-500 hover:text-red-600">{{ Auth::user()->name }}</a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="text-sm text-gray-500 hover:text-red-600">Logout</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
+            </nav>
+
         </aside>
 
         {{-- Main Content --}}
