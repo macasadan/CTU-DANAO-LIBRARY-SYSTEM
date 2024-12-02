@@ -76,6 +76,34 @@ class SuperadminmainnaniController extends Controller
         $users = User::where('is_admin', false)->get();
         return view('super-admin.user-management', compact('users'));
     }
+    public function deleteUser(Request $request, $userId)
+    {
+        try {
+            $user = User::findOrFail($userId);
+
+            // Prevent deleting admin users
+            if ($user->is_admin) {
+                return redirect()->route('super-admin.user-management')
+                    ->with('error', 'Cannot delete an administrator account.');
+            }
+
+            // Log the deletion
+            Log::info('User deleted by super admin', [
+                'user_id' => $user->id,
+                'user_name' => $user->name,
+                'user_email' => $user->email
+            ]);
+
+            // Delete the user
+            $user->delete();
+
+            return redirect()->route('super-admin.user-management')
+                ->with('success', 'User successfully deleted.');
+        } catch (\Exception $e) {
+            return redirect()->route('super-admin.user-management')
+                ->with('error', 'An error occurred while deleting the user.');
+        }
+    }
 
     // You can remove the systemLogs method if it's no longer needed
     public function books()

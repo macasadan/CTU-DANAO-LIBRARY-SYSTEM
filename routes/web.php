@@ -43,6 +43,8 @@ Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')-
     Route::get('/create-admin', [SuperadminmainnaniController::class, 'createAdmin'])->name('create-admin');
     Route::post('/store-admin', [SuperadminmainnaniController::class, 'storeAdmin'])->name('store-admin');
     Route::get('/user-management', [SuperadminmainnaniController::class, 'userManagement'])->name('user-management');
+    Route::delete('/user-management/{userId}', [SuperadminmainnaniController::class, 'deleteUser'])
+        ->name('delete-user');
     Route::get('pc-room/session-logs', [SuperadminmainnaniController::class, 'sessionLogs'])
         ->name('session-logs');
     Route::get('/lost-item-logs', [SuperadminmainnaniController::class, 'lostItemLogs'])
