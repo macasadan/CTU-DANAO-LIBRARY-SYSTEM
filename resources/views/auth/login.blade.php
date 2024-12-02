@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Library Management System Login">
     <title>Library Management System - Login</title>
+    <link rel="icon" type="image/jpg" href="{{ asset('/images/logo.jpg') }}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add reCAPTCHA script -->
@@ -114,7 +115,7 @@
             <!-- reCAPTCHA -->
             <div class="flex justify-center">
                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"
-                    data-callback='onSubmit' 
+                    data-callback='onSubmit'
                     data-action='submit'></div>
                 @error('g-recaptcha-response')
                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
