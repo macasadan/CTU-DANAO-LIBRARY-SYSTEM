@@ -22,12 +22,9 @@
             <p class="text-3xl font-bold text-red-600">{{ $totalDiscussionRooms }}</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Existing cards -->
-            <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold mb-4">Total Administrators</h2>
-                <p class="text-3xl font-bold text-purple-600">{{ $totalAdmins }}</p>
-            </div>
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Total Administrators</h2>
+            <p class="text-3xl font-bold text-purple-600">{{ $totalAdmins }}</p>
         </div>
     </div>
 
