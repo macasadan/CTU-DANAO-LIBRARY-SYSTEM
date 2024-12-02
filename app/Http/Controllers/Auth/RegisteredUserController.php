@@ -24,14 +24,33 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', new StrongPassword],
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-zA-Z\s\'-]+$/', // Allow apostrophes and hyphens
+                function ($attribute, $value, $fail) {
+                    if (str_contains(strtolower($value), 'admin')) {
+                        $fail('Name contains restricted words.');
+                    }
+                }
+            ],
+            'email' => [
+                'required',
+                'string',
+                'lowercase',
+                'email:rfc,dns', // Added DNS validation
+                'max:255',
+                'unique:' . User::class
+            ],
+
+            'password' => ['required', 'confirmed',  'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/', new StrongPassword],
+
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => strip_tags(trim($request->name)),
+            'email' => filter_var($request->email, FILTER_SANITIZE_EMAIL),
             'password' => Hash::make($request->password),
         ]);
 
