@@ -33,10 +33,10 @@
                     <i class="fas fa-book-reader text-4xl text-blue-600"></i>
                 </div>
             </div>
-            <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
+            <h2 class="mt-6 text-3xl font-extrabold text-blue-900">
                 Create Account
             </h2>
-            <p class="mt-2 text-sm text-gray-600">
+            <p class="mt-2 text-sm font-semibold text-yellow-500">
                 Join our library community today
             </p>
         </div>
