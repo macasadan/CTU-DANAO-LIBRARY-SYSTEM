@@ -16,32 +16,29 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach($admins as $admin)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $admin->name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $admin->email }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $admin->created_at->format('M d, Y') }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex space-x-2">
-                                <a href="#" class="text-blue-600 hover:text-blue-900">Edit</a>
-                                <form action="#" method="POST" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-900" 
-                                            onclick="return confirm('Are you sure you want to remove this admin?')">
-                                        Remove
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $admin->name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $admin->email }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $admin->created_at->format('M d, Y') }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <form action="{{ route('super-admin.delete-admin', $admin->id) }}" method="POST" class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:text-red-900"
+                                onclick="return confirm('Are you sure you want to remove this admin?')">
+                                Remove
+                            </button>
+                        </form>
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 
     <div class="mt-6">
-        <a href="{{ route('super-admin.create-admin') }}" 
-           class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
+        <a href="{{ route('super-admin.create-admin') }}"
+            class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
             Create New Admin
         </a>
     </div>

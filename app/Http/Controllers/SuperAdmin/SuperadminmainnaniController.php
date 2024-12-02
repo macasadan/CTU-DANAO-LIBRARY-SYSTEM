@@ -65,12 +65,35 @@ class SuperadminmainnaniController extends Controller
             ->with('success', 'Admin created successfully');
     }
 
-    public function systemLogs()
+    public function deleteAdmin(Request $request, $adminId)
     {
-        // Implement system logs view
-        return view('super-admin.system-logs');
-    }
+        try {
+            $admin = User::findOrFail($adminId);
 
+            // Ensure we're not deleting the last admin
+            $adminCount = User::where('is_admin', true)->count();
+            if ($adminCount <= 1) {
+                return redirect()->route('super-admin.manage-admins')
+                    ->with('error', 'Cannot delete the last administrator.');
+            }
+
+            // Log the deletion
+            Log::info('Admin deleted by super admin', [
+                'admin_id' => $admin->id,
+                'admin_name' => $admin->name,
+                'admin_email' => $admin->email
+            ]);
+
+            // Delete the admin
+            $admin->delete();
+
+            return redirect()->route('super-admin.manage-admins')
+                ->with('success', 'Admin successfully deleted.');
+        } catch (\Exception $e) {
+            return redirect()->route('super-admin.manage-admins')
+                ->with('error', 'An error occurred while deleting the admin.');
+        }
+    }
     public function userManagement()
     {
         $users = User::where('is_admin', false)->get();
