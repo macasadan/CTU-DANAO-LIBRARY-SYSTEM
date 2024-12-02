@@ -41,14 +41,14 @@ Route::middleware(['auth', 'verified', SuperAdminMiddleware::class])->prefix('su
     Route::get('/dashboard', [SuperadminmainnaniController::class, 'dashboard'])->name('dashboard');
     Route::get('/manage-admins', [SuperadminmainnaniController::class, 'manageAdmins'])->name('manage-admins');
     Route::get('/create-admin', [SuperadminmainnaniController::class, 'createAdmin'])->name('create-admin');
-    Route::post('/store-admin', [SuperadminmainnaniController::class, 'storeAdmin'])->name('store-admin');
+    Route::post('/store-admin', [SuperadminmainnaniController::class, 'storeAdmin'])->middleware(['throttle:5,1'])->name('store-admin');
     Route::get('/user-management', [SuperadminmainnaniController::class, 'userManagement'])->name('user-management');
-    Route::delete('/user-management/{userId}', [SuperadminmainnaniController::class, 'deleteUser'])
+    Route::delete('/user-management/{userId}', [SuperadminmainnaniController::class, 'deleteUser'])->middleware(['throttle:5,1'])
         ->name('delete-user');
     Route::delete(
         '/delete-admin/{adminId}',
         [SuperadminmainnaniController::class, 'deleteAdmin']
-    )
+    )->middleware(['throttle:5,1'])
         ->name('delete-admin');
     Route::get('pc-room/session-logs', [SuperadminmainnaniController::class, 'sessionLogs'])
         ->name('session-logs');
@@ -74,7 +74,7 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->prefix('admin')
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     // Book routes
-    Route::resource('books', AdminBookController::class);
+    Route::resource('books', AdminBookController::class)->middleware(['throttle:5,1']);
     Route::get('/returned_books', [AdminController::class, 'returnedBooks'])->name('returnedBooks');
 
     // Books Borrow routes
@@ -127,7 +127,7 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->prefix('admin')
     // Lost Items Report
     Route::get('/lost_items', [AdminLostItemController::class, 'index'])->name('lost_items.index');
     Route::get('/lost_items/create', [AdminLostItemController::class, 'create'])->name('lost_items.create');
-    Route::post('/lost_items', [AdminLostItemController::class, 'store'])->name('lost_items.store');
+    Route::post('/lost_items', [AdminLostItemController::class, 'store'])->middleware(['throttle:5,1'])->name('lost_items.store');
     Route::get('/lost_items/{lostItem}', [AdminLostItemController::class, 'show'])->name('lost_items.show');
     Route::patch('/lost_items/{lostItem}/status', [AdminLostItemController::class, 'updateStatus'])->name('lost_items.update-status');
     Route::delete('/lost_items/{lostItem}', [AdminLostItemController::class, 'destroy'])->name('lost_items.destroy');
@@ -147,9 +147,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Book routes
     Route::get('/books', [BookController::class, 'index'])->name('books.index');
     Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
-    Route::post('/books/borrow/{book}', [BookController::class, 'borrow'])->name('books.borrow');
+    Route::post('/books/borrow/{book}', [BookController::class, 'borrow'])->middleware(['throttle:5,1'])->name('books.borrow');
     Route::get('/borrowed_books', [BookController::class, 'borrowedBooks'])->name('borrowed.books');
-    Route::post('/books/return/{borrowId}', [BookController::class, 'returnBook'])->name('books.return');
+    Route::post('/books/return/{borrowId}', [BookController::class, 'returnBook'])->middleware(['throttle:5,1'])->name('books.return');
     Route::get('/books/category/{category}', [BookController::class, 'booksByCategory'])->name('books.category')->where('category', '[0-9]+');
     Route::get('/books/history', [BookController::class, 'borrowingHistory'])->name('books.history');
 
@@ -160,8 +160,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // PC Room routes
     Route::prefix('pc-room')->name('pc-room.')->group(function () {
         Route::get('/', [PcRoomController::class, 'index'])->name('index');
-        Route::post('/pc-room/request-access', [PcRoomController::class, 'requestAccess'])->name('pc-room.request-access');
-        Route::post('/request-access', [PcRoomController::class, 'requestAccess'])->name('request');
+        Route::post('/pc-room/request-access', [PcRoomController::class, 'requestAccess'])->middleware(['throttle:5,1'])->name('pc-room.request-access');
+        Route::post('/request-access', [PcRoomController::class, 'requestAccess'])->middleware(['throttle:5,1'])->name('request');
         Route::post('/end-session', [PcRoomController::class, 'endSession'])->name('end-session');
     });
 
@@ -169,8 +169,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('reservations')->name('reservations.')->group(function () {
         Route::get('/', [DiscussionRoomController::class, 'index'])->name('index');
         Route::get('/create', [DiscussionRoomController::class, 'create'])->name('create');
-        Route::post('/', [DiscussionRoomController::class, 'store'])->name('store');
-        Route::post('/check-availability', [DiscussionRoomController::class, 'checkRoomAvailability'])->name('check-availability');
+        Route::post('/', [DiscussionRoomController::class, 'store'])->middleware(['throttle:5,1'])->name('store');
+        Route::post('/check-availability', [DiscussionRoomController::class, 'checkRoomAvailability'])->middleware(['throttle:5,1'])->name('check-availability');
         Route::patch('/{reservations}', [DiscussionRoomController::class, 'update'])->name('update');
     });
 });
