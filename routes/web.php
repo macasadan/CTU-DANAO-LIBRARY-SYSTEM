@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\MessageController;
 use App\Http\Controllers\LostItemController;
 use App\Http\Controllers\PcRoomController;
 use App\Http\Controllers\DiscussionRoomController;
@@ -23,8 +22,6 @@ use App\Http\Controllers\SuperAdmin\SuperadminmainnaniController;
 Route::get('/', function () {
     return view('landing');
 });
-Route::post('/submit-message', [MessageController::class, 'submitMessage'])
-    ->name('submit-message');
 
 // Profile Routes
 Route::middleware('auth')->group(function () {
@@ -63,12 +60,6 @@ Route::middleware(['auth', 'verified', SuperAdminMiddleware::class])->prefix('su
     Route::get('/history', [SuperadminmainnaniController::class, 'discussionRoomHistory'])
         ->name('history');
 
-        Route::get('message-inbox', [SuperadminmainnaniController::class, 'messageInbox'])
-        ->name('message-inbox');
-    Route::get('message/{id}', [SuperadminmainnaniController::class, 'viewMessage'])
-        ->name('view-message');
-    Route::delete('message/{id}', [SuperadminmainnaniController::class, 'deleteMessage'])
-        ->name('delete-message');
 
     // Book routes
     Route::get('/books', [SuperAdminBookController::class, 'index'])->name('books.index');
