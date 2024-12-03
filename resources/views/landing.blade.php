@@ -552,23 +552,24 @@
                 <!-- Contact Form -->
                 <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition duration-300">
                     <h4 class="text-2xl font-semibold mb-6 text-blue-700">Send us a message</h4>
-                    <form class="space-y-6">
-                        <div class="relative group">
-                            <label class="block text-gray-700 font-medium mb-2">Name</label>
-                            <input type="text" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
-                        </div>
-                        <div class="relative group">
-                            <label class="block text-gray-700 font-medium mb-2">Email</label>
-                            <input type="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
-                        </div>
-                        <div class="relative group">
-                            <label class="block text-gray-700 font-medium mb-2">Message</label>
-                            <textarea rows="4" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"></textarea>
-                        </div>
-                        <button class="w-full py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-600 transform hover:scale-105 transition duration-300">
-                            Send Message
-                        </button>
-                    </form>
+                    <form action="{{ route('submit-message') }}" method="POST" class="space-y-6">
+    @csrf
+    <div class="relative group">
+        <label class="block text-gray-700 font-medium mb-2">Name</label>
+        <input type="text" name="name" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+    </div>
+    <div class="relative group">
+        <label class="block text-gray-700 font-medium mb-2">Email</label>
+        <input type="email" name="email" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+    </div>
+    <div class="relative group">
+        <label class="block text-gray-700 font-medium mb-2">Message</label>
+        <textarea name="message" rows="4" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"></textarea>
+    </div>
+    <button type="submit" class="w-full py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-600 transform hover:scale-105 transition duration-300">
+        Send Message
+    </button>
+</form>
                 </div>
 
                 <!-- Contact Information -->

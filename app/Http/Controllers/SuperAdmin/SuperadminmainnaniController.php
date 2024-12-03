@@ -252,4 +252,26 @@ class SuperadminmainnaniController extends Controller
 
         return view('super-admin.history', compact('reservations', 'stats'));
     }
+    public function messageInbox()
+{
+    $messages = Message::orderBy('created_at', 'desc')
+        ->paginate(10);
+    return view('super-admin.message-inbox', compact('messages'));
+}
+
+public function viewMessage($id)
+{
+    $message = Message::findOrFail($id);
+    $message->is_read = true;
+    $message->save();
+    return view('super-admin.view-message', compact('message'));
+}
+
+public function deleteMessage($id)
+{
+    $message = Message::findOrFail($id);
+    $message->delete();
+    return redirect()->route('super-admin.message-inbox')
+        ->with('success', 'Message deleted successfully.');
+}
 }
