@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use App\Models\Borrow;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class ProfileController extends Controller
 {
@@ -39,28 +40,27 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
-    public function updatePassword(Request $request): RedirectResponse
+    public function updatePassword(Request $request)
     {
-        $request->validate([
-            'current_password' => ['required', 'current_password'],
-            'password' => [
-                'required', 
-                'confirmed', 
-                'min:8', 
-                'different:current_password',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'
-            ],
-        ], [
-            'password.regex' => 'Password must include uppercase, lowercase, number, and special character.',
-            'password.different' => 'New password must be different from current password.'
+        // Validate and sanitize input
+        $validated = $request->validate([
+            'current_password' => ['required'],
+            'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'], // Alphanumeric only
         ]);
-    
+
+        // Check if current password is correct
+        if (!Hash::check($validated['current_password'], $request->user()->password)) {
+            throw ValidationException::withMessages([
+                'current_password' => __('The provided password does not match our records.'),
+            ]);
+        }
+
+        // Update password
         $request->user()->update([
-            'password' => Hash::make($request->input('password'))
+            'password' => Hash::make($validated['password']),
         ]);
-    
-        return Redirect::route('profile.edit')
-            ->with('status', 'password-updated');
+
+        return redirect()->route('profile.edit')->with('status', 'password-updated');
     }
 
     /**
