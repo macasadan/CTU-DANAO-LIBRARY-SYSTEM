@@ -113,12 +113,12 @@
             </div>
 
             <!-- reCAPTCHA -->
-            <div class="flex justify-center">
+            <div class="flex flex-col items-center">
                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"
                     data-callback='onSubmit'
                     data-action='submit'></div>
                 @error('g-recaptcha-response')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-2 text-sm text-red-600 text-center">{{ $message }}</p>
                 @enderror
             </div>
 
