@@ -38,6 +38,22 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+    public function updatePassword(Request $request)
+    {
+        // Validate and sanitize the input
+        $validated = $request->validate([
+            'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'], // Alphanumeric validation
+        ]);
+
+        // Hash the password (for security)
+        $sanitizedPassword = bcrypt($validated['password']);
+
+        // Update the password in the database (example for authenticated user)
+        $user = auth()->user();
+        $user->update(['password' => $sanitizedPassword]);
+
+        return back()->with('status', 'Password updated successfully!');
+    }
 
     /**
      * Delete the user's account.
@@ -59,6 +75,7 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
 
     public function dashboard()
     {
