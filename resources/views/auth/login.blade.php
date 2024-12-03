@@ -17,9 +17,12 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Darker background overlay */
+            background-blend-mode: darken;
         }
 
-        .glass-effect {
+        Copy .glass-effect {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
         }
@@ -34,8 +37,7 @@
             <p class="text-sm">{{ session('status') }}</p>
         </div>
         @endif
-
-        <!-- Header Section -->
+        Copy <!-- Header Section -->
         <div class="text-center">
             <div class="flex justify-center">
                 <div class="rounded-full bg-blue-100 p-4">
@@ -113,12 +115,12 @@
             </div>
 
             <!-- reCAPTCHA -->
-            <div class="flex justify-center">
+            <div class="flex flex-col items-center">
                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"
                     data-callback='onSubmit'
                     data-action='submit'></div>
                 @error('g-recaptcha-response')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-2 text-sm text-red-600 text-center">{{ $message }}</p>
                 @enderror
             </div>
 
