@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Borrow;
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -38,21 +39,28 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
-    public function updatePassword(Request $request)
+    public function updatePassword(Request $request): RedirectResponse
     {
-        // Validate and sanitize the input
-        $validated = $request->validate([
-            'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'], // Alphanumeric validation
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => [
+                'required', 
+                'confirmed', 
+                'min:8', 
+                'different:current_password',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'
+            ],
+        ], [
+            'password.regex' => 'Password must include uppercase, lowercase, number, and special character.',
+            'password.different' => 'New password must be different from current password.'
         ]);
-
-        // Hash the password (for security)
-        $sanitizedPassword = bcrypt($validated['password']);
-
-        // Update the password in the database (example for authenticated user)
-        $user = auth()->user();
-        $user->update(['password' => $sanitizedPassword]);
-
-        return back()->with('status', 'Password updated successfully!');
+    
+        $request->user()->update([
+            'password' => Hash::make($request->input('password'))
+        ]);
+    
+        return Redirect::route('profile.edit')
+            ->with('status', 'password-updated');
     }
 
     /**
