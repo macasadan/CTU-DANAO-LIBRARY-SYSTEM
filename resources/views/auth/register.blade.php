@@ -101,6 +101,11 @@
                         autocomplete="new-password"
                         class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 @error('password') border-red-500 @enderror"
                         onkeyup="checkPasswordStrength(this.value)">
+                    <button type="button"
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        onclick="togglePasswordVisibility('password', this)">
+                        <i class="fas fa-eye-slash text-gray-400 hover:text-gray-600"></i>
+                    </button>
                 </div>
 
                 <!-- Password Strength Indicator -->
@@ -157,6 +162,11 @@
                         class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         placeholder="••••••••"
                         autocomplete="new-password">
+                    <button type="button"
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        onclick="togglePasswordVisibility('password_confirmation', this)">
+                        <i class="fas fa-eye-slash text-gray-400 hover:text-gray-600"></i>
+                    </button>
                 </div>
             </div>
 
@@ -265,6 +275,22 @@
             } else {
                 strengthText.textContent = 'Weak password';
                 strengthText.className = 'mt-1 text-sm text-red-600';
+            }
+        }
+
+        // New function to toggle password visibility
+        function togglePasswordVisibility(inputId, button) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = button.querySelector('i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
             }
         }
     </script>

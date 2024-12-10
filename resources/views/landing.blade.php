@@ -170,9 +170,9 @@
         });
     </script>
     <!-- Hero Section -->
-    <section class="relative bg-cover bg-center text-white py-32"
-        style="background-image: url('{{ asset('images/bg2.jpg') }}');">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <section class="relative bg-cover bg-center text-white py-32" style="background-image: url('{{ asset('images/bg2.jpg') }}');">
+        <div class="absolute inset-0 bg-black bg-opacity-50">
+        </div>
         <div class="container mx-auto relative z-10 text-center">
             <h2 class="text-5xl font-bold mb-6 drop-shadow-lg">Welcome to CTU Danao Library System</h2>
             <p class="text-lg font-light mb-8 max-w-3xl mx-auto drop-shadow-md">
@@ -475,7 +475,6 @@
                     </div>
                 </div>
 
-
                 <div class="group">
                     <div class="relative overflow-hidden bg-white rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -628,8 +627,6 @@
 
     </section>
 
-
-
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300 py-6">
         <div class="container mx-auto text-center">
@@ -644,4 +641,3 @@
 </body>
 
 </html>
-</body>

@@ -38,10 +38,10 @@ class AuthenticatedSessionController extends Controller
     {
         // Check for previous failed attempts
         $recentAttempts = LoginAttempt::where('ip_address', $request->ip())
-        ->where('email', $request->email)
-        ->where('status', 'failed')
-        ->where('created_at', '>=', now()->subMinutes(self::LOCKOUT_MINUTES))
-        ->count();
+            ->where('email', $request->email)
+            ->where('status', 'failed')
+            ->where('created_at', '>=', now()->subMinutes(self::LOCKOUT_MINUTES))
+            ->count();
 
 
         if ($recentAttempts >= self::MAX_ATTEMPTS) {
@@ -50,7 +50,7 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
-       
+
 
         // Record login attempt
         $attempt = LoginAttempt::create([
@@ -83,17 +83,17 @@ class AuthenticatedSessionController extends Controller
 
             if (Auth::attempt($request->only('email', 'password'))) {
                 $request->session()->regenerate();
-        
+
                 $user = Auth::user();
-        
+
                 if ($user->is_super_admin) {
                     return redirect()->route('super-admin.dashboard');
                 }
-        
+
                 if ($user->is_admin) {
                     return redirect()->route('admin.dashboard');
                 }
-        
+
                 return redirect()->route('dashboard');
             }
 
