@@ -25,4 +25,10 @@ class LostItem extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // New method to check if the item can be edited
+    public function isEditable()
+    {
+        return $this->status !== 'found';
+    }
 }

@@ -131,6 +131,7 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->prefix('admin')
     Route::get('/lost_items/{lostItem}', [AdminLostItemController::class, 'show'])->name('lost_items.show');
     Route::patch('/lost_items/{lostItem}/status', [AdminLostItemController::class, 'updateStatus'])->name('lost_items.update-status');
     Route::delete('/lost_items/{lostItem}', [AdminLostItemController::class, 'destroy'])->name('lost_items.destroy');
+    Route::put('/lost_items/{lostItem}', [AdminLostItemController::class, 'update'])->name('lost_items.update');
 });
 
 

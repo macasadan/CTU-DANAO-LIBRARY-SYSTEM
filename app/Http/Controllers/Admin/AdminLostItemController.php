@@ -54,6 +54,29 @@ class AdminLostItemController extends Controller
         return redirect()->route('admin.lost_items.index')->with('success', 'Lost item reported successfully.');
     }
 
+    // Update method with edit prevention
+    public function update(Request $request, LostItem $lostItem)
+    {
+        // Check if the item is editable
+        if (!$lostItem->isEditable()) {
+            return redirect()->route('admin.lost_items.index')
+                ->with('error', 'Found items cannot be edited.');
+        }
+
+        $request->validate([
+            'item_type' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'date_lost' => 'required|date',
+            'time_lost' => 'required',
+            'location' => 'required|string|max:255',
+        ]);
+
+        $lostItem->update($request->validated());
+
+        return redirect()->route('admin.lost_items.index')
+            ->with('success', 'Lost item updated successfully.');
+    }
+
     // Update the status of an item (e.g., mark as found)
     public function updateStatus(Request $request, LostItem $lostItem)
     {
@@ -61,10 +84,17 @@ class AdminLostItemController extends Controller
             'status' => ['required', Rule::in(['lost', 'found'])],
         ]);
 
+        // Prevent changing status from 'found' back to 'lost'
+        if ($lostItem->status === 'found' && $request->status === 'lost') {
+            return redirect()->route('admin.lost_items.index')
+                ->with('error', 'Cannot change status from Found to Lost.');
+        }
+
         $lostItem->status = $request->status;
         $lostItem->save();
 
-        return redirect()->route('admin.lost_items.index')->with('success', 'Item status updated.');
+        return redirect()->route('admin.lost_items.index')
+            ->with('success', 'Item status updated.');
     }
 
     // Delete a lost item

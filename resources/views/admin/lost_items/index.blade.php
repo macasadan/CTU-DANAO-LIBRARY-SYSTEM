@@ -4,6 +4,12 @@
 <div class="container mx-auto px-4 py-6">
     <h2 class="text-3xl font-bold mb-6 text-gray-800">Lost Item Management</h2>
 
+    @if(session('error'))
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+        {{ session('error') }}
+    </div>
+    @endif
+
     <div class="mb-6">
         <a href="{{ route('admin.lost_items.create') }}" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
             Report Lost Item
@@ -34,6 +40,8 @@
                         <a href="{{ route('admin.lost_items.show', $item) }}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
                             View
                         </a>
+
+                        @if($item->status !== 'found')
                         <form action="{{ route('admin.lost_items.update-status', $item) }}" method="POST" class="inline">
                             @csrf
                             @method('PATCH')
@@ -45,13 +53,7 @@
                                 Update
                             </button>
                         </form>
-                        <form action="{{ route('admin.lost_items.destroy', $item) }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 ml-2">
-                                Delete
-                            </button>
-                        </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
