@@ -4,7 +4,7 @@
 <div class="container mx-auto px-4 py-6">
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold">Lost Item Details</h1>
-        <a href="{{ route('lost_items.index') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out flex items-center">
+        <a href="{{ route('admin.lost_items.index') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out flex items-center">
             <i class="fas fa-arrow-left mr-2"></i>
             Back to Lost Items
         </a>
